@@ -19,7 +19,4 @@ public interface UserCrudRepository extends JpaRepository<User, Long> {
 
     @Modifying
     void deleteByUsername(String username);
-
-    @Query("SELECT u FROM User JOIN ")
-    List<Rating> findRatingsForUserByUsername(String username);
 }
