@@ -1,5 +1,6 @@
 package com.bycompany.projects.MovieManager.persistence.entity;
 
+import com.bycompany.projects.MovieManager.util.MovieGenre;
 import jakarta.persistence.*;
 
 import javax.annotation.processing.Generated;
@@ -17,7 +18,8 @@ public class Movie {
     @Column(nullable = false)
     private String director;
 
-    private String genre;
+    @Enumerated(EnumType.STRING)
+    private MovieGenre genre;
 
     private int releaseYear;
 
@@ -57,11 +59,11 @@ public class Movie {
         this.director = director;
     }
 
-    public String getGenre() {
+    public MovieGenre getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre) {
+    public void setGenre(MovieGenre genre) {
         this.genre = genre;
     }
 
