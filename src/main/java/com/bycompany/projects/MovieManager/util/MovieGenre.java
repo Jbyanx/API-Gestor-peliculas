@@ -1,14 +1,19 @@
 package com.bycompany.projects.MovieManager.util;
 
 public enum MovieGenre {
-    CLASICO,
-    COMEDIA,
+    ACTION,
+    COMEDY,
     DRAMA,
-    ACCION,
-    CIENCIA_FICCION,
-    TERROR,
-    FANTASIA,
-    AVENTURA,
+    HORROR,
     ROMANCE,
-    ANIMACION
+    SCIENCE_FICTION,
+    FANTASY,
+    THRILLER,
+    ANIMATION,
+    DOCUMENTARY,
+    ADVENTURE,
+    CRIME,
+    MYSTERY,
+    FAMILY,
+    MUSIC
 }
