@@ -21,12 +21,12 @@ public class RatingServiceImp implements RatingService {
 
     @Override
     public List<Rating> findAllByMovieId(Long id) {
-        return List.of(); //ON READY
+        return ratingCrudRepository.findByMovieId(id);
     }
 
     @Override
     public List<Rating> findAllByUsername(String username) {
-        return List.of(); //ON READY
+        return ratingCrudRepository.findByUsername(username);
     }
 
     @Override
