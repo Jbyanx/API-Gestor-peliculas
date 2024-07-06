@@ -1,9 +1,12 @@
 package com.bycompany.projects.MovieManager.controller;
 
+import com.bycompany.projects.MovieManager.exception.ObjectNotFoundException;
 import com.bycompany.projects.MovieManager.persistence.entity.Movie;
 import com.bycompany.projects.MovieManager.service.MovieService;
 import com.bycompany.projects.MovieManager.util.MovieGenre;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,8 +19,8 @@ public class MovieController {
     private MovieService movieService;
 
     @GetMapping
-    public List<Movie> findAll(@RequestParam(required = false) String title,
-                               @RequestParam(required = false) MovieGenre genre){
+    public ResponseEntity<List<Movie>> findAll(@RequestParam(required = false) String title,
+                                  @RequestParam(required = false) MovieGenre genre){
         List<Movie> movies = null;
 
         if(StringUtils.hasText(title) && genre != null){
@@ -30,10 +33,15 @@ public class MovieController {
             movies = movieService.findAll();
         }
 
-        return  movies;
+        return ResponseEntity.ok(movies);
     }
     @GetMapping("/{id}")
-    public Movie findOneById(@PathVariable Long id){
-        return movieService.findOneById(id);
+    public ResponseEntity<Movie> findOneById(@PathVariable Long id){
+        try{
+            return ResponseEntity.ok(movieService.findOneById(id));
+        }catch (ObjectNotFoundException ob){
+            return  ResponseEntity.notFound().build();
+        }
+
     }
 }
