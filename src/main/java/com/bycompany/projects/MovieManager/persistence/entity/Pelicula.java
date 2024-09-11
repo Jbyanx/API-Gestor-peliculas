@@ -3,11 +3,11 @@ package com.bycompany.projects.MovieManager.persistence.entity;
 import com.bycompany.projects.MovieManager.util.MovieGenre;
 import jakarta.persistence.*;
 
-import javax.annotation.processing.Generated;
 import java.util.List;
 
 @Entity
-public class Movie {
+@Table(name = "peliculas")
+public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,7 +24,7 @@ public class Movie {
     private int releaseYear;
 
     //RELATIONSHIP WITH ==RATING==
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "movie", targetEntity = Rating.class)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "pelicula", targetEntity = Rating.class)
     private List<Rating> ratings;
 
     public List<Rating> getRatings() {

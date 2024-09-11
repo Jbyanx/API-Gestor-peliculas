@@ -18,22 +18,22 @@ public class Rating {
 
     @ManyToOne
     @JoinColumn(name = "movie_id", insertable = false, updatable = false)
-    private Movie movie;
+    private Pelicula pelicula;
 
     @ManyToOne
     @JoinColumn(name = "user_id", insertable = false, updatable = false)
-    private User user;
+    private Usuario usuario;
 
     @Check(constraints = "rating >= 0 and rating <=5")
     @Column(nullable = false)
     private int rating;
 
-    public Movie getMovie() {
-        return movie;
+    public Pelicula getMovie() {
+        return pelicula;
     }
 
-    public void setMovie(Movie movie) {
-        this.movie = movie;
+    public void setMovie(Pelicula pelicula) {
+        this.pelicula = pelicula;
     }
 
     public Long getId() {
@@ -68,11 +68,11 @@ public class Rating {
         this.rating = rating;
     }
 
-    public User getUser() {
-        return user;
+    public Usuario getUser() {
+        return usuario;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

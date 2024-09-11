@@ -5,7 +5,8 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class User {
+@Table(name = "usuarios")
+public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +19,7 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", targetEntity = Rating.class)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "usuario", targetEntity = Rating.class)
     private List<Rating> ratings;
 
     public List<Rating> getRatings() {

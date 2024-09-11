@@ -1,7 +1,7 @@
 package com.bycompany.projects.MovieManager.service.impl;
 
 import com.bycompany.projects.MovieManager.exception.ObjectNotFoundException;
-import com.bycompany.projects.MovieManager.persistence.entity.User;
+import com.bycompany.projects.MovieManager.persistence.entity.Usuario;
 import com.bycompany.projects.MovieManager.persistence.repository.UserCrudRepository;
 import com.bycompany.projects.MovieManager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,43 +15,43 @@ public class UserServiceImp implements UserService {
     UserCrudRepository userCrudRepository;
 
     @Override
-    public List<User> findAll() {
+    public List<Usuario> findAll() {
         return userCrudRepository.findAll();
     }
 
     @Override
-    public List<User> findAllByName(String name) {
+    public List<Usuario> findAllByName(String name) {
         return userCrudRepository.findAllByNameContaining(name);
     }
 
     @Override
-    public User findOneByUsername(String username) {
+    public Usuario findOneByUsername(String username) {
         return userCrudRepository.findByUsername(username)
-                .orElseThrow( () -> new ObjectNotFoundException("[User username: "+username+"]"));
+                .orElseThrow( () -> new ObjectNotFoundException("[Usuario username: "+username+"]"));
     }
 
     @Override
-    public User createOne(User user) {
-        return userCrudRepository.save(user);
+    public Usuario createOne(Usuario usuario) {
+        return userCrudRepository.save(usuario);
     }
 
     @Override
-    public User updateOneByUsername(String username, User user) {
-        User user_bd = findOneByUsername(username);
+    public Usuario updateOneByUsername(String username, Usuario usuario) {
+        Usuario user_bd = findOneByUsername(username);
 
-        user_bd.setName(user.getName());
-        user_bd.setPassword(user.getPassword());
+        user_bd.setName(usuario.getName());
+        user_bd.setPassword(usuario.getPassword());
 
         return userCrudRepository.save(user_bd);
     }
 
     @Override
     public void deleteByUsername(String username) {
-//        User userToDelete = this.findOneByUsername(username);
+//        Usuario userToDelete = this.findOneByUsername(username);
 //        userCrudRepository.delete(userToDelete);
 
         if(userCrudRepository.deleteByUsername(username) != 1 ){
-            throw new ObjectNotFoundException("[User username: "+username+"]");
+            throw new ObjectNotFoundException("[Usuario username: "+username+"]");
         }
     }
 }

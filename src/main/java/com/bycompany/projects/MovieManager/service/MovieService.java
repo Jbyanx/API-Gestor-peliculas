@@ -1,25 +1,25 @@
 package com.bycompany.projects.MovieManager.service;
 
-import com.bycompany.projects.MovieManager.persistence.entity.Movie;
+import com.bycompany.projects.MovieManager.persistence.entity.Pelicula;
 import com.bycompany.projects.MovieManager.util.MovieGenre;
 
 import java.util.List;
 
 public interface MovieService {
 
-    List<Movie> findAll();
+    List<Pelicula> findAll();
 
-    List<Movie> findAllByTitle(String title);
+    List<Pelicula> findAllByTitle(String title);
 
-    List<Movie> findAllByGenre(MovieGenre genre);
+    List<Pelicula> findAllByGenre(MovieGenre genre);
 
-    List<Movie> findAllByGenreAndTitle(MovieGenre genre, String title);
+    List<Pelicula> findAllByGenreAndTitle(MovieGenre genre, String title);
 
-    Movie findOneById(Long id);
+    Pelicula findOneById(Long id);
 
-    Movie createOne(Movie movie);
+    Pelicula createOne(Pelicula pelicula);
 
-    Movie updateOneById(Long id, Movie movie);
+    Pelicula updateOneById(Long id, Pelicula pelicula);
 
     void deleteOneById(Long id);
 }

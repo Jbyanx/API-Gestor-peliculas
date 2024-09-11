@@ -1,20 +1,20 @@
 package com.bycompany.projects.MovieManager.service;
 
-import com.bycompany.projects.MovieManager.persistence.entity.User;
+import com.bycompany.projects.MovieManager.persistence.entity.Usuario;
 
 import java.util.List;
 
 public interface UserService {
 
-    List<User> findAll();
+    List<Usuario> findAll();
 
-    List<User> findAllByName(String name);
+    List<Usuario> findAllByName(String name);
 
-    User findOneByUsername(String username);
+    Usuario findOneByUsername(String username);
 
-    User createOne(User user);
+    Usuario createOne(Usuario usuario);
 
-    User updateOneByUsername(String username, User user);
+    Usuario updateOneByUsername(String username, Usuario usuario);
 
     void deleteByUsername(String username);
 }

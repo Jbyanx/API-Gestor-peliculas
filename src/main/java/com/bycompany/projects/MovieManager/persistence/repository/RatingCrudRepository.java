@@ -13,6 +13,6 @@ public interface RatingCrudRepository extends JpaRepository<Rating, Long> {
 
     //List<Rating> findByUserUsername(String Username);
 
-    @Query("SELECT r FROM Rating r JOIN r.user u WHERE u.username = ?1")
+    @Query("SELECT r FROM Rating r JOIN r.usuario u WHERE u.username = ?1")
     List<Rating> findByUsername(String username);
 }
